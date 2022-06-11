@@ -7,7 +7,7 @@
 -	Ottenere tutte le stanze disponibili
 -	Creare una prenotazione a un evento
 -	Lasciare una recensione per l’organizzatore
--	Creare una lista di eventi preferiti (eventi a cui un utente parteciperà)
+-	Creare una lista di eventi preferiti (eventi a cui un utente è interessato)
 -	Ottenere la lista degli eventi che un utente ha pubblicato
 -	Ottenere la lista degli eventi a cui un utente ha partecipato o le prenotazioni future
 -	Ottenere tutte gli eventi disponibili
