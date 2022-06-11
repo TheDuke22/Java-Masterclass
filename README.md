@@ -43,6 +43,6 @@ OPERAZIONI
 -	Recensione
   o	Creazione di una recensione a partire da una prenotazione (controllare se l’evento sia già finito)
   
-  ![AllYourEvents](https://user-images.githubusercontent.com/83754920/173194147-bf44dea1-c911-4180-bad0-79792242d599.jpg)
+![AllYourEvents](https://user-images.githubusercontent.com/83754920/173194187-39fe1245-61fd-4476-be3b-1d4745d3c457.jpg)
 
 
