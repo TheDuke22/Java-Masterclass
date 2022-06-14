@@ -16,8 +16,19 @@ public class Evento {
     private UUID idStanza;
     private UUID idOrganizzatore;
 
-    public Evento(UUID id, String titolo, String descrizione, Date data, Time oraInizio, Time oraFine, Float prezzo, UUID idStanza, UUID idOrganizzatore) {
-        this.id = id;
+    public Evento(String titolo, String descrizione, Date data, Time oraInizio, Time oraFine, Float prezzo, UUID idStanza, UUID idOrganizzatore) {
+        this.titolo = titolo;
+        this.descrizione = descrizione;
+        this.data = data;
+        this.oraInizio = oraInizio;
+        this.oraFine = oraFine;
+        this.prezzo = prezzo;
+        this.idStanza = idStanza;
+        this.idOrganizzatore = idOrganizzatore;
+    }
+
+    public Evento(UUID id,String titolo, String descrizione, Date data, Time oraInizio, Time oraFine, Float prezzo, UUID idStanza, UUID idOrganizzatore) {
+        this.id=id;
         this.titolo = titolo;
         this.descrizione = descrizione;
         this.data = data;
