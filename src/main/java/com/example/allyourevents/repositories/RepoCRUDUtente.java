@@ -1,19 +1,31 @@
 package com.example.allyourevents.repositories;
 
+import com.example.allyourevents.models.Evento;
 import com.example.allyourevents.models.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.UUID;
+import java.sql.Time;
+import java.util.*;
 
 @Repository
 public class RepoCRUDUtente {
 
+    private List<Evento> getFullEvento(List<UUID> eventi){
+        String query = "select e.* from schema_isolaevent.evento as e where e.id = ?";
+        List<Evento> e = new ArrayList<>();
+        for (UUID uuid : eventi) {
+            e.add( jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(Evento.class), uuid));
+        }
+        return e;
+    }
+
     @Autowired
     JdbcTemplate jdbcTemplate;
+    List<Evento> eventiCreati = new ArrayList<>();
+
     public boolean createUtente (Utente utente){
        int value = jdbcTemplate.update("insert into schema_isolaevent.utente(nome, cognome, email, datadinascita, portafoglio ) values (?,?,?,?,?)",
                 utente.getNome(),utente.getCognome(),utente.getEmail(),utente.getDataDiNascita(),utente.getPortafoglio());
@@ -36,4 +48,8 @@ public class RepoCRUDUtente {
         return jdbcTemplate.update(sql, id) >0;
     }
 
+    public List<Evento> getOrganizzati(UUID idOrganizzatore){   //id appartenente all'entità utente
+        String query = "select e.id from schema_isolaevent.evento as e where e.idorganizzatore = ?";
+        return getFullEvento(jdbcTemplate.queryForList(query,UUID.class,idOrganizzatore));
+    }
 }

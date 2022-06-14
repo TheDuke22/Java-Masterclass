@@ -1,5 +1,6 @@
 package com.example.allyourevents.controller;
 
+import com.example.allyourevents.models.Evento;
 import com.example.allyourevents.models.Utente;
 import com.example.allyourevents.repositories.RepoCRUDUtente;
 import com.example.allyourevents.services.CrudService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -48,4 +50,10 @@ public class IsolaController {
         return ResponseEntity.badRequest().build();
     }
 
+    @GetMapping (value = "/getOrganizzati")
+    public ResponseEntity<List<Evento>> getOrganizzati(@RequestParam (value = "idOrganizzatore") UUID idOrganizzatore){
+        List<Evento> eventiOrganizzati = service.getOrganizzati(idOrganizzatore);
+        if(eventiOrganizzati.isEmpty()) return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok().body(eventiOrganizzati);
+    }
 }

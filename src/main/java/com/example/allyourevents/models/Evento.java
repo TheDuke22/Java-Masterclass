@@ -27,6 +27,8 @@ public class Evento {
         this.idOrganizzatore = idOrganizzatore;
     }
 
+    public Evento(){}
+
     public Evento(UUID id,String titolo, String descrizione, Date data, Time oraInizio, Time oraFine, Float prezzo, UUID idStanza, UUID idOrganizzatore) {
         this.id=id;
         this.titolo = titolo;
