@@ -6,10 +6,12 @@ import com.example.allyourevents.models.Utente;
 import com.example.allyourevents.repositories.RepoCRUDUtente;
 import com.example.allyourevents.services.CrudService;
 import com.example.allyourevents.services.ServicePrenotazione;
+import com.example.allyourevents.services.ServiceRecensione;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Provider;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,10 +22,13 @@ public class IsolaController {
     CrudService service;
     @Autowired
     ServicePrenotazione servicePren;
+    @Autowired
+    ServiceRecensione serviceRec;
 
-    public IsolaController(CrudService service, ServicePrenotazione servicePren) {
+    public IsolaController(CrudService service, ServicePrenotazione servicePren, ServiceRecensione serviceRec) {
         this.service = service;
         this.servicePren = servicePren;
+        this.serviceRec = serviceRec;
     }
 
     @PostMapping (value = "/createUtente")
@@ -82,4 +87,12 @@ public class IsolaController {
         if(prenotazioniFuture == null) return ResponseEntity.badRequest().build();
         return ResponseEntity.ok().body(prenotazioniFuture);
     }
+
+    @PostMapping(value = "/createRecensione")
+    public ResponseEntity<Void> createRecensione(@RequestParam(value = "titolo") String titolo, @RequestParam(value = "descrizione") String descrizione, @RequestParam(value = "valutazione") int valutazione, @RequestParam(value = "idprenotazione") UUID idPren){
+        boolean isCreated = serviceRec.creaRecensione(titolo,descrizione,valutazione,idPren);
+        if(isCreated)return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
+    }
+
 }
