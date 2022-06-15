@@ -3,16 +3,11 @@ package com.example.allyourevents.repositories;
 Prenotazione o Crea prenotazione per un evento (passaggio di utente ed evento come parametri) oppure
 Ottenere tutte le prenotazioni passate dato un utente o Ottenere tutte le prenotazioni future dato un utente
  */
-import com.example.allyourevents.models.Evento;
-import com.example.allyourevents.models.Prenota;
-import com.example.allyourevents.models.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
