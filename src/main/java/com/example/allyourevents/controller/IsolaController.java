@@ -18,15 +18,14 @@ import java.util.UUID;
 public class IsolaController {
     @Autowired
     CrudService service;
+    @Autowired
     ServiceForStanza serviceForStanza;
 
-    public IsolaController(CrudService service) {
+    public IsolaController(CrudService service, ServiceForStanza serviceForStanza) {
         this.service = service;
-    }
-
-    public IsolaController(ServiceForStanza serviceForStanza) {
         this.serviceForStanza = serviceForStanza;
     }
+
 
     @PostMapping (value = "/createUtente")
     public ResponseEntity <Void> createUtente (@RequestBody Utente utente){
@@ -95,5 +94,6 @@ public class IsolaController {
         if (deleted)return ResponseEntity.ok().build();
         return ResponseEntity.badRequest().build();
     }
+
 
 }
