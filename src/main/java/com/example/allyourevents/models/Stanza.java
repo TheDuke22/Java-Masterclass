@@ -5,7 +5,6 @@ import java.util.UUID;
 public class Stanza {
     private UUID id;
     private String nome;
-
     private int posti_Disp;
     private Short capienza;
 

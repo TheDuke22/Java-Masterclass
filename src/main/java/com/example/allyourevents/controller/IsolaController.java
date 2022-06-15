@@ -1,9 +1,11 @@
 package com.example.allyourevents.controller;
 
 import com.example.allyourevents.models.Evento;
+import com.example.allyourevents.models.Prenota;
 import com.example.allyourevents.models.Utente;
 import com.example.allyourevents.repositories.RepoCRUDUtente;
 import com.example.allyourevents.services.CrudService;
+import com.example.allyourevents.services.ServicePrenotazione;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +18,12 @@ import java.util.UUID;
 public class IsolaController {
     @Autowired
     CrudService service;
+    @Autowired
+    ServicePrenotazione servicePren;
 
-    public IsolaController(CrudService service) {
+    public IsolaController(CrudService service, ServicePrenotazione servicePren) {
         this.service = service;
+        this.servicePren = servicePren;
     }
 
     @PostMapping (value = "/createUtente")
@@ -55,5 +60,26 @@ public class IsolaController {
         List<Evento> eventiOrganizzati = service.getOrganizzati(idOrganizzatore);
         if(eventiOrganizzati.isEmpty()) return ResponseEntity.badRequest().build();
         return ResponseEntity.ok().body(eventiOrganizzati);
+    }
+
+    @PostMapping (value = "/createPrenotazione")
+    public ResponseEntity<Void> createPrenotazione(@RequestParam(value = "idutente") UUID idutente,@RequestParam(value="idevento") UUID idevento){
+            boolean isCreated = servicePren.creaPrenotazione(idutente,idevento);
+            if(isCreated) return ResponseEntity.ok().build();
+            return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping(value="/getPrenotazioniPassate")
+    public ResponseEntity<List<UUID>> getPrenotazioniPassate(@RequestParam(value="idutente") UUID idutente){
+        List<UUID> prenotazioniPassate = servicePren.getPrenotazioniPassate(idutente);
+        if(prenotazioniPassate.isEmpty()) return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok().body(prenotazioniPassate);
+    }
+
+    @GetMapping(value = "/getPrenotazioniFuture")
+    public ResponseEntity<List<UUID>> getPrenotazioniFuture(@RequestParam(value="idutente") UUID idutente){
+        List<UUID> prenotazioniFuture = servicePren.getPrenotazioniFuture(idutente);
+        if(prenotazioniFuture == null) return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok().body(prenotazioniFuture);
     }
 }
