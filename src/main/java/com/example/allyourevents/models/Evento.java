@@ -1,45 +1,32 @@
 package com.example.allyourevents.models;
 
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.UUID;
 
 public class Evento {
-
     private UUID id;
     private String titolo;
     private String descrizione;
-    private Date data;
-    private Time oraInizio;
-    private Time oraFine;
+
+    private Timestamp dataOraInizio;
+    private Timestamp dataOraFine;
     private Float prezzo;
     private UUID idStanza;
     private UUID idOrganizzatore;
 
-    public Evento(String titolo, String descrizione, Date data, Time oraInizio, Time oraFine, Float prezzo, UUID idStanza, UUID idOrganizzatore) {
+    public Evento(String titolo, String descrizione, Timestamp dataOraInizio, Timestamp dataOraFine, Float prezzo, UUID idStanza, UUID idOrganizzatore) {
         this.titolo = titolo;
         this.descrizione = descrizione;
-        this.data = data;
-        this.oraInizio = oraInizio;
-        this.oraFine = oraFine;
+        this.dataOraInizio = dataOraInizio;
+        this.dataOraFine = dataOraFine;
         this.prezzo = prezzo;
         this.idStanza = idStanza;
         this.idOrganizzatore = idOrganizzatore;
     }
 
     public Evento(){}
-
-    public Evento(UUID id,String titolo, String descrizione, Date data, Time oraInizio, Time oraFine, Float prezzo, UUID idStanza, UUID idOrganizzatore) {
-        this.id=id;
-        this.titolo = titolo;
-        this.descrizione = descrizione;
-        this.data = data;
-        this.oraInizio = oraInizio;
-        this.oraFine = oraFine;
-        this.prezzo = prezzo;
-        this.idStanza = idStanza;
-        this.idOrganizzatore = idOrganizzatore;
-    }
 
     public UUID getId() {
         return id;
@@ -65,28 +52,20 @@ public class Evento {
         this.descrizione = descrizione;
     }
 
-    public Date getData() {
-        return data;
+    public Timestamp getDataOraInizio() {
+        return dataOraInizio;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public Timestamp getDataOraFine() {
+        return dataOraFine;
     }
 
-    public Time getOraInizio() {
-        return oraInizio;
+    public void setDataOraInizio(Timestamp dataOraInizio) {
+        this.dataOraInizio = dataOraInizio;
     }
 
-    public void setOraInizio(Time oraInizio) {
-        this.oraInizio = oraInizio;
-    }
-
-    public Time getOraFine() {
-        return oraFine;
-    }
-
-    public void setOraFine(Time oraFine) {
-        this.oraFine = oraFine;
+    public void setDataOraFine(Timestamp dataOraFine) {
+        this.dataOraFine = dataOraFine;
     }
 
     public Float getPrezzo() {

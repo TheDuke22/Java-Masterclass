@@ -4,6 +4,7 @@ import com.example.allyourevents.models.Evento;
 import com.example.allyourevents.models.Utente;
 import com.example.allyourevents.repositories.RepoCRUDUtente;
 import com.example.allyourevents.services.CrudService;
+import com.example.allyourevents.services.ServiceForEvents;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +18,12 @@ public class IsolaController {
     @Autowired
     CrudService service;
 
-    public IsolaController(CrudService service) {
+    @Autowired
+    ServiceForEvents serviceForEvents;
+
+    public IsolaController(CrudService service,ServiceForEvents serviceForEvents) {
         this.service = service;
+        this.serviceForEvents=serviceForEvents;
     }
 
     @PostMapping (value = "/createUtente")
@@ -55,5 +60,27 @@ public class IsolaController {
         List<Evento> eventiOrganizzati = service.getOrganizzati(idOrganizzatore);
         if(eventiOrganizzati.isEmpty()) return ResponseEntity.badRequest().build();
         return ResponseEntity.ok().body(eventiOrganizzati);
+    }
+
+    @PostMapping(value="/createEvento")
+    public ResponseEntity<Void> createEvento(@RequestBody Evento evento){
+        boolean created=serviceForEvents.createEvent(evento);
+        if(created) return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping(value="/getEvento")
+    public ResponseEntity<Evento> getEvento(@RequestParam(value="id") UUID id){
+        Evento evento= serviceForEvents.getEvento(id);
+        if(evento!=null) return ResponseEntity.ok(evento);
+        return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping(value = "/getEventiDisponibili")
+    public ResponseEntity<List<Evento>> getAllEvents(){
+        UUID id=new UUID(0,0);
+        List<Evento> eventi = serviceForEvents.getAvailableEvents(id);
+        if(eventi!=null) return ResponseEntity.ok(eventi);
+        return ResponseEntity.badRequest().build();
     }
 }
