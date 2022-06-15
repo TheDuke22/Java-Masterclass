@@ -1,9 +1,11 @@
 package com.example.allyourevents.controller;
 
 import com.example.allyourevents.models.Evento;
+import com.example.allyourevents.models.Stanza;
 import com.example.allyourevents.models.Utente;
 import com.example.allyourevents.repositories.RepoCRUDUtente;
 import com.example.allyourevents.services.CrudService;
+import com.example.allyourevents.services.ServiceForStanza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +18,14 @@ import java.util.UUID;
 public class IsolaController {
     @Autowired
     CrudService service;
+    ServiceForStanza serviceForStanza;
 
     public IsolaController(CrudService service) {
         this.service = service;
+    }
+
+    public IsolaController(ServiceForStanza serviceForStanza) {
+        this.serviceForStanza = serviceForStanza;
     }
 
     @PostMapping (value = "/createUtente")
@@ -56,4 +63,37 @@ public class IsolaController {
         if(eventiOrganizzati.isEmpty()) return ResponseEntity.badRequest().build();
         return ResponseEntity.ok().body(eventiOrganizzati);
     }
+
+
+    @PostMapping (value = "/createStanza")
+    public ResponseEntity <Void> createStanza(@RequestBody Stanza stanza){
+        boolean isCreated = serviceForStanza.createStanza(stanza);
+        if (isCreated) return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
+    }
+
+
+    @GetMapping (value = "/getStanza")
+    public ResponseEntity <Stanza> getStanza (@RequestParam (value = "id")UUID id ){
+        Stanza stanza = serviceForStanza.getStanza(id);
+        if (stanza!=null)return ResponseEntity.ok().body(stanza);
+        return ResponseEntity.badRequest().build();
+    }
+
+
+    @PutMapping (value = "/updateStanza")
+    public ResponseEntity <Void> updateStanza (@RequestBody Stanza stanza){
+        boolean isUpdated= serviceForStanza.updateStanza(stanza);
+        if(isUpdated) return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
+    }
+
+
+    @DeleteMapping (value = "/deleteStanza")
+    public  ResponseEntity <Void> deleteStanza(@RequestParam (value = "id")UUID id){
+        boolean deleted = serviceForStanza.deleteStanza(id);
+        if (deleted)return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
+    }
+
 }
