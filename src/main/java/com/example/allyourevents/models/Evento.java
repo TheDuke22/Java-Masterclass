@@ -1,14 +1,10 @@
 package com.example.allyourevents.models;
 
-import org.apache.tomcat.jni.Local;
-
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 public class Evento {
+
     private UUID id;
     private String titolo;
     private String descrizione;
@@ -30,6 +26,17 @@ public class Evento {
     }
 
     public Evento(){}
+
+    public Evento(UUID id,String titolo, String descrizione, LocalDateTime dataOraInizio, LocalDateTime dataOraFine, Float prezzo, UUID idStanza, UUID idOrganizzatore) {
+        this.id=id;
+        this.titolo = titolo;
+        this.descrizione = descrizione;
+        this.dataOraInizio = dataOraInizio;
+        this.dataOraFine = dataOraFine;
+        this.prezzo = prezzo;
+        this.idStanza = idStanza;
+        this.idOrganizzatore = idOrganizzatore;
+    }
 
     public UUID getId() {
         return id;
