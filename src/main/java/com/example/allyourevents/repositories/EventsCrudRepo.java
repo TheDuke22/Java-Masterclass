@@ -28,15 +28,16 @@ public class EventsCrudRepo {
     //da rivedere e controllare e testare
     //creare un evento
     public boolean createEvent(Evento evento){
-        System.out.println("Ciao");
 
         //controlla se ci sono collisioni di orari
-        String sql="select count(*) from schema_isolaevent.evento where ((e.data_ora_inizio>? and e.data_ora_fine<?) or (e.data_ora_inizio>?  and e.data_ora_fine<?)) and e.idstanza=?";
+        String sql="select count(*) from schema_isolaevent.evento e where ((e.data_ora_inizio<=? and e.data_ora_fine>=?) or (e.data_ora_inizio<=?  and e.data_ora_fine>=?) or (e.data_ora_inizio>? and e.data_ora_fine<?)) and e.idstanza=?";
 
-        int collisioneEvento=jdbcTemplate.queryForObject(sql,Integer.class,evento.getDataOraInizio(),evento.getDataOraInizio(),evento.getDataOraFine(),evento.getDataOraFine(),evento.getIdStanza());
+        int collisioneEvento=jdbcTemplate.queryForObject(sql,Integer.class,evento.getDataOraInizio(),evento.getDataOraInizio(),evento.getDataOraFine(),evento.getDataOraFine(),evento.getDataOraInizio(),evento.getDataOraFine(),evento.getIdStanza());
+
 
         //esci se c'è una collisione
         if(collisioneEvento>0){
+            System.out.println("c'e' collisione di eventi");
             return false;
         }
 

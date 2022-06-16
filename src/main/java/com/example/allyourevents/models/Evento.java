@@ -1,7 +1,10 @@
 package com.example.allyourevents.models;
 
+import org.apache.tomcat.jni.Local;
+
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -10,13 +13,13 @@ public class Evento {
     private String titolo;
     private String descrizione;
 
-    private Timestamp dataOraInizio;
-    private Timestamp dataOraFine;
+    private LocalDateTime dataOraInizio;
+    private LocalDateTime dataOraFine;
     private Float prezzo;
     private UUID idStanza;
     private UUID idOrganizzatore;
 
-    public Evento(String titolo, String descrizione, Timestamp dataOraInizio, Timestamp dataOraFine, Float prezzo, UUID idStanza, UUID idOrganizzatore) {
+    public Evento(String titolo, String descrizione, LocalDateTime dataOraInizio, LocalDateTime dataOraFine, Float prezzo, UUID idStanza, UUID idOrganizzatore) {
         this.titolo = titolo;
         this.descrizione = descrizione;
         this.dataOraInizio = dataOraInizio;
@@ -52,19 +55,19 @@ public class Evento {
         this.descrizione = descrizione;
     }
 
-    public Timestamp getDataOraInizio() {
+    public LocalDateTime getDataOraInizio() {
         return dataOraInizio;
     }
 
-    public Timestamp getDataOraFine() {
+    public LocalDateTime getDataOraFine() {
         return dataOraFine;
     }
 
-    public void setDataOraInizio(Timestamp dataOraInizio) {
+    public void setDataOraInizio(LocalDateTime dataOraInizio) {
         this.dataOraInizio = dataOraInizio;
     }
 
-    public void setDataOraFine(Timestamp dataOraFine) {
+    public void setDataOraFine(LocalDateTime dataOraFine) {
         this.dataOraFine = dataOraFine;
     }
 
