@@ -6,7 +6,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +64,6 @@ public class EventsCrudRepo {
             return null;
         }
 
-
         String solution="select e.* from schema_isolaevent.evento e where e.id=?";
         Evento e=jdbcTemplate.queryForObject(solution,new BeanPropertyRowMapper<>(Evento.class),id);
 
@@ -77,8 +75,19 @@ public class EventsCrudRepo {
     }
 
     public List<Evento> getAllEvents(){
+        List<UUID> eventi;
+        String sql="select e.id from schema_isolaevent.evento e where true";
 
-        return null;
+        eventi=jdbcTemplate.queryForList(sql,UUID.class);
+
+        List<Evento> solution=new ArrayList<>();
+        for(UUID e:eventi){
+            Evento eve;
+            if((eve=getAvailableEvent(e))!=null){
+                solution.add(eve);
+            }
+        }
+        return solution;
     }
 
 

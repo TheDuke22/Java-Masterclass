@@ -76,10 +76,19 @@ public class IsolaController {
         return ResponseEntity.badRequest().build();
     }
 
-    @GetMapping(value = "/getEventiDisponibili")
-    public ResponseEntity<Evento> getAllEvents(@RequestParam(value="id") UUID id){
+    @GetMapping(value = "/getEventoSeDisponibile")
+    public ResponseEntity<Evento> getAnEvent(@RequestParam(value="id") UUID id){
         Evento evento = serviceForEvents.getAvailableEvents(id);
         if(evento!=null) return ResponseEntity.ok(evento);
+        return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping(value="/getEventiDisponibili")
+    public ResponseEntity<List<Evento>> getAllEvents(){
+        List<Evento> eventi;
+        if((eventi=serviceForEvents.getAllEvents())!=null){
+            return ResponseEntity.ok().body(eventi);
+        }
         return ResponseEntity.badRequest().build();
     }
 }
