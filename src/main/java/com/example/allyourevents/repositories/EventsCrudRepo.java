@@ -48,12 +48,12 @@ public class EventsCrudRepo {
     //select di tutti gli eventi solo se posti disponibili >0
     public Evento getAvailableEvent(UUID id){
 
-        //conta i posti disponibili rispetto ad un evento
+        //conta i posti occupati rispetto ad un evento
         String sql="select count(*) from schema_isolaevent.prenota p where p.idevento=?";
 
         int postiOccupati=jdbcTemplate.queryForObject(sql,Integer.class,id);
 
-        //conta i posti disponibili
+        //conta la capienza
         String sql_two="select s.capienza from schema_isolaevent.evento e, schema_isolaevent.stanza s where e.idstanza=s.id and e.id=?";
 
         int capienza=jdbcTemplate.queryForObject(sql_two,Integer.class,id);
@@ -66,18 +66,19 @@ public class EventsCrudRepo {
         String solution="select e.* from schema_isolaevent.evento e where e.id=?";
         Evento e=jdbcTemplate.queryForObject(solution,new BeanPropertyRowMapper<>(Evento.class),id);
 
-        if(!e.getDataOraInizio().isBefore(LocalDateTime.now())){
+        if(e.getDataOraInizio().isAfter(LocalDateTime.now())){
             return e;
         }
         System.out.println("L'evento non piu' disponibile perchè è gia' passato");
         return null;
     }
 
-    public List<Evento> getAllEvents(){
+    public List<Evento> getAllEvents(){   // Tutti gli eventi disponibili
         List<UUID> eventi;
         String sql="select e.id from schema_isolaevent.evento e where true";
 
         eventi=jdbcTemplate.queryForList(sql,UUID.class);
+        if(eventi.isEmpty()) return null;
 
         List<Evento> solution=new ArrayList<>();
         for(UUID e:eventi){
@@ -88,6 +89,4 @@ public class EventsCrudRepo {
         }
         return solution;
     }
-
-
 }
