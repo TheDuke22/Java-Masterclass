@@ -36,7 +36,6 @@ public class EventsCrudRepo {
         int value = jdbcTemplate.update("insert into schema_isolaevent.evento(titolo, descrizione, prezzo, idstanza, idorganizzatore, data_ora_inizio, data_ora_fine) values (?,?,?,?,?,?,?)",
                 evento.getTitolo(),evento.getDescrizione(),evento.getPrezzo(),evento.getIdStanza(),evento.getIdOrganizzatore(),evento.getDataOraInizio(),evento.getDataOraFine());
 
-
         return value > 0;
     }
 
