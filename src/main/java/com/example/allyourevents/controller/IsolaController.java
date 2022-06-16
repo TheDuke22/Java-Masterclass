@@ -2,12 +2,14 @@ package com.example.allyourevents.controller;
 
 import com.example.allyourevents.models.Evento;
 import com.example.allyourevents.models.Prenota;
+import com.example.allyourevents.models.Stanza;
 import com.example.allyourevents.models.Utente;
 import com.example.allyourevents.repositories.RepoCRUDUtente;
 import com.example.allyourevents.services.CrudService;
 import com.example.allyourevents.services.ServicePrenotazione;
 import com.example.allyourevents.services.ServiceRecensione;
 import com.example.allyourevents.services.ServiceForEvents;
+import com.example.allyourevents.services.ServiceForStanza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,13 +29,17 @@ public class IsolaController {
     ServiceRecensione serviceRec;
     @Autowired
     ServiceForEvents serviceForEvents;
+    @Autowired
+    ServiceForStanza serviceForStanza;
 
-    public IsolaController(CrudService service, ServicePrenotazione servicePren, ServiceRecensione serviceRec,ServiceForEvents serviceForEvents) {
+    public IsolaController(CrudService service, ServicePrenotazione servicePren, ServiceRecensione serviceRec,ServiceForEvents serviceForEvents,ServiceForStanza serviceForStanza) {
         this.service = service;
         this.serviceForEvents=serviceForEvents;
         this.servicePren = servicePren;
         this.serviceRec = serviceRec;
+        this.serviceForStanza = serviceForStanza;
     }
+
 
     @PostMapping (value = "/createUtente")
     public ResponseEntity <Void> createUtente (@RequestBody Utente utente){

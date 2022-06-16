@@ -5,22 +5,19 @@ import java.util.UUID;
 public class Stanza {
     private UUID id;
     private String nome;
-    private int posti_Disp;
     private Short capienza;
 
     public Stanza(UUID id, String nome, Short capienza) {
         this.id = id;
         this.nome = nome;
         this.capienza = capienza;
-        posti_Disp = this.capienza;
     }
 
-    public int getPosti_Disp() {
-        return posti_Disp;
+    public Stanza(String nome, Short capienza) {
+        this.nome = nome;
+        this.capienza = capienza;
     }
-    public void setPosti_Disp(int posti_Disp) {
-        this.posti_Disp = posti_Disp;
-    }
+    public Stanza(){}
     public UUID getId() {
         return id;
     }
