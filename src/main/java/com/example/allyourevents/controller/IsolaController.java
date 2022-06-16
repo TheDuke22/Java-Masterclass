@@ -5,11 +5,7 @@ import com.example.allyourevents.models.Prenota;
 import com.example.allyourevents.models.Stanza;
 import com.example.allyourevents.models.Utente;
 import com.example.allyourevents.repositories.RepoCRUDUtente;
-import com.example.allyourevents.services.CrudService;
-import com.example.allyourevents.services.ServicePrenotazione;
-import com.example.allyourevents.services.ServiceRecensione;
-import com.example.allyourevents.services.ServiceForEvents;
-import com.example.allyourevents.services.ServiceForStanza;
+import com.example.allyourevents.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,12 +28,16 @@ public class IsolaController {
     @Autowired
     ServiceForStanza serviceForStanza;
 
-    public IsolaController(CrudService service, ServicePrenotazione servicePren, ServiceRecensione serviceRec,ServiceForEvents serviceForEvents,ServiceForStanza serviceForStanza) {
+    @Autowired
+    ServicePreferiti servicePreferiti;
+
+    public IsolaController(CrudService service, ServicePrenotazione servicePren, ServiceRecensione serviceRec,ServiceForEvents serviceForEvents,ServiceForStanza serviceForStanza, ServicePreferiti servicePreferiti) {
         this.service = service;
         this.serviceForEvents=serviceForEvents;
         this.servicePren = servicePren;
         this.serviceRec = serviceRec;
         this.serviceForStanza = serviceForStanza;
+        this.servicePreferiti = servicePreferiti;
     }
 
 
@@ -135,4 +135,24 @@ public class IsolaController {
         return ResponseEntity.badRequest().build();
     }
 
+    @PostMapping(value = "/inserisciPreferito")
+    public ResponseEntity<Void> inserisciPreferito(@RequestParam(value = "idutente") UUID idUtente, @RequestParam(value="idEvento") UUID idEvento){
+        boolean isInserted = servicePreferiti.inserisciPreferito(idUtente,idEvento);
+        if(isInserted) return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
+    }
+
+    @DeleteMapping(value = "/rimuoviPreferito")
+    public ResponseEntity<Void> rimuoviPreferito(@RequestParam(value = "idutente") UUID idUtente, @RequestParam(value="idEvento") UUID idEvento){
+        boolean isDeleted = servicePreferiti.removePreferito(idUtente,idEvento);
+        if(isDeleted) return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping(value = "/getPreferiti")
+    public ResponseEntity<List<UUID>> getPreferiti(@RequestParam(value="idutente") UUID idUtente){
+        List<UUID> preferiti = servicePreferiti.getPreferiti(idUtente);
+        if(preferiti.isEmpty()) return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok().body(preferiti);
+    }
 }
