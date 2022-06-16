@@ -7,21 +7,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Repository
 public class EventsCrudRepo {
-
-    private List<Evento> getFullEvento(List<UUID> eventi){
-        String query = "select e.* from schema_isolaevent.evento as e where e.id = ?";
-        List<Evento> e = new ArrayList<>();
-        for (UUID uuid : eventi) {
-            e.add( jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(Evento.class), uuid));
-        }
-        return e;
-    }
     @Autowired
     JdbcTemplate jdbcTemplate;
 
@@ -56,15 +48,36 @@ public class EventsCrudRepo {
     }
 
     //select di tutti gli eventi solo se posti disponibili >0
-    public List<Evento> getAllEvents(UUID id){
-        //conta i posti disponibili rispetto ad un evento
-        String sql="select count id=? from schema_isolaevent.prenotazione";
-        int number=jdbcTemplate.queryForObject(sql,Integer.class,id);
+    public Evento getAvailableEvent(UUID id){
 
-        /*
-        String sql ="select e.id from schema_isolaevent.evento e,schema_isolaevent.stanza s where s.id=e.idstanza and s.postidisponibili>0";
-        return getFullEvento(jdbcTemplate.queryForList(sql,UUID.class));
-        */
+        //conta i posti disponibili rispetto ad un evento
+        String sql="select count(*) from schema_isolaevent.prenota p where p.idevento=?";
+
+        int postiOccupati=jdbcTemplate.queryForObject(sql,Integer.class,id);
+
+        //conta i posti disponibili
+        String sql_two="select s.capienza from schema_isolaevent.evento e, schema_isolaevent.stanza s where e.idstanza=s.id and e.id=?";
+
+        int capienza=jdbcTemplate.queryForObject(sql_two,Integer.class,id);
+
+        if(postiOccupati>=capienza){
+            System.out.println("Non ci sono piu' posti per quest'evento");
+            return null;
+        }
+
+
+        String solution="select e.* from schema_isolaevent.evento e where e.id=?";
+        Evento e=jdbcTemplate.queryForObject(solution,new BeanPropertyRowMapper<>(Evento.class),id);
+
+        if(!e.getDataOraInizio().isBefore(LocalDateTime.now())){
+            return e;
+        }
+        System.out.println("L'evento non piu' disponibile perchè è gia' passato");
+        return null;
+    }
+
+    public List<Evento> getAllEvents(){
+
         return null;
     }
 

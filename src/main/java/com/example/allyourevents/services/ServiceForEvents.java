@@ -31,7 +31,7 @@ public class ServiceForEvents {
         return repoForEvents.getEvento(id);
     }
 
-    public List<Evento> getAvailableEvents(UUID id){
-        return repoForEvents.getAllEvents(id);
+    public Evento getAvailableEvents(UUID id){
+        return repoForEvents.getAvailableEvent(id);
     }
 }
