@@ -20,7 +20,7 @@ public class ServiceForEvents {
 
     public boolean createEvent(Evento evento){
         //controlla che l'orario di inizio non sia un orario
-        if(evento.getDataOraInizio().toLocalDateTime().isBefore(LocalDateTime.now())){
+        if(evento.getDataOraInizio().isBefore(LocalDateTime.now())){
             System.out.println("La data e l'orario sono già passate");
             return false;
         }
@@ -31,7 +31,11 @@ public class ServiceForEvents {
         return repoForEvents.getEvento(id);
     }
 
-    public List<Evento> getAvailableEvents(UUID id){
-        return repoForEvents.getAllEvents(id);
+    public Evento getAvailableEvents(UUID id){
+        return repoForEvents.getAvailableEvent(id);
+    }
+
+    public List<Evento> getAllEvents(){
+        return repoForEvents.getAllEvents();
     }
 }

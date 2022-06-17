@@ -43,6 +43,6 @@ OPERAZIONI
 -	Recensione
   o	Creazione di una recensione a partire da una prenotazione (controllare se l’evento sia già finito)
 
-![IsolaEvent](https://user-images.githubusercontent.com/83754920/173826417-a6358b91-55b9-4067-835a-d6e3d73d1739.jpg)
+![IsolaEvent](https://user-images.githubusercontent.com/83754920/173840589-796795c7-a4cf-48c7-943b-e19f4db8bdf7.jpg)
 
 
