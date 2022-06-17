@@ -5,10 +5,12 @@ import com.example.allyourevents.models.Stanza;
 import com.example.allyourevents.models.Utente;
 import com.example.allyourevents.repositories.RepoCRUDUtente;
 import com.example.allyourevents.services.CrudService;
+import com.example.allyourevents.services.ServiceForEvents;
 import com.example.allyourevents.services.ServiceForStanza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.example.allyourevents.services.ServiceForEvents;
 
 import java.util.List;
 import java.util.UUID;
@@ -20,9 +22,13 @@ public class IsolaController {
     CrudService service;
     @Autowired
     ServiceForStanza serviceForStanza;
+    @Autowired
+    ServiceForEvents serviceForEvents;
 
-    public IsolaController(CrudService service, ServiceForStanza serviceForStanza) {
+
+    public IsolaController(CrudService service, ServiceForEvents serviceForEvents, ServiceForStanza serviceForStanza) {
         this.service = service;
+        this.serviceForEvents=serviceForEvents;
         this.serviceForStanza = serviceForStanza;
     }
 
@@ -95,5 +101,26 @@ public class IsolaController {
         return ResponseEntity.badRequest().build();
     }
 
+    @PostMapping(value="/createEvento")
+    public ResponseEntity<Void> createEvento(@RequestBody Evento evento){
+        boolean created=serviceForEvents.createEvent(evento);
+        if(created) return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping(value="/getEvento")
+    public ResponseEntity<Evento> getEvento(@RequestParam(value="id") UUID id){
+        Evento evento= serviceForEvents.getEvento(id);
+        if(evento!=null) return ResponseEntity.ok(evento);
+        return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping(value = "/getEventiDisponibili")
+    public ResponseEntity<List<Evento>> getAllEvents(){
+        UUID id=new UUID(0,0);
+        List<Evento> eventi = serviceForEvents.getAvailableEvents(id);
+        if(eventi!=null) return ResponseEntity.ok(eventi);
+        return ResponseEntity.badRequest().build();
+    }
 
 }
