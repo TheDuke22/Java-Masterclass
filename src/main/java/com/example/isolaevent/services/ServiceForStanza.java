@@ -1,7 +1,7 @@
-package com.example.allyourevents.services;
+package com.example.isolaevent.services;
 
-import com.example.allyourevents.models.Stanza;
-import com.example.allyourevents.repositories.RepoCRUDStanza;
+import com.example.isolaevent.models.Stanza;
+import com.example.isolaevent.repositories.RepoCRUDStanza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

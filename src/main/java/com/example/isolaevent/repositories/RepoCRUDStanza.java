@@ -1,6 +1,6 @@
-package com.example.allyourevents.repositories;
+package com.example.isolaevent.repositories;
 
-import com.example.allyourevents.models.Stanza;
+import com.example.isolaevent.models.Stanza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

@@ -1,16 +1,12 @@
-package com.example.allyourevents.controller;
+package com.example.isolaevent.controller;
 
-import com.example.allyourevents.models.Evento;
-import com.example.allyourevents.models.Prenota;
-import com.example.allyourevents.models.Stanza;
-import com.example.allyourevents.models.Utente;
-import com.example.allyourevents.repositories.RepoCRUDUtente;
-import com.example.allyourevents.services.*;
+import com.example.isolaevent.models.Evento;
+import com.example.isolaevent.models.Utente;
+import com.example.isolaevent.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Provider;
 import java.util.List;
 import java.util.UUID;
 

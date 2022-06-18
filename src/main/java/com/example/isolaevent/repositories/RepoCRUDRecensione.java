@@ -1,7 +1,5 @@
-package com.example.allyourevents.repositories;
+package com.example.isolaevent.repositories;
 
-import com.example.allyourevents.models.Prenota;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
