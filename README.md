@@ -39,14 +39,14 @@ Le principali funzioni che possono essere svolte sono:
 DETTAGLIO DELLE OPERAZIONI
 
 -	Utente
-  *	Creazione
-  *	Update (set Utente e get Utente)
-  *	Cancellazione
-  *	Ottenere tutti gli eventi creati da un utente
+  Creazione
+  Update (set Utente e get Utente)
+  Cancellazione
+  Ottenere tutti gli eventi creati da un utente
   
 -	Evento
-  *	Creazione
-  *	Ottenere un evento con un certo id
+  Creazione
+  Ottenere un evento con un certo id
   *	Ottenere tutti gli eventi disponibili
   
 -	Prenotazione
