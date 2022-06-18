@@ -44,7 +44,7 @@ DETTAGLIO DELLE OPERAZIONI
    - Cancellazione
    - Ottenere tutti gli eventi creati da un utente
   
-2.	Evento
+2. Evento
    - Creazione
    - Ottenere un evento con un certo id
  	- Ottenere tutti gli eventi disponibili
