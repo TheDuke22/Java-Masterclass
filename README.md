@@ -18,7 +18,7 @@ LE ENTITA': campi
 - Prenota: id_prenotazione, id_evento, id_Utente 
 - Preferito: id_preferito, id_evento, id_utente
 
-*Prenota e Preferito sono derivanti dalla relazione molti a molti.
+*Prenota e Preferito derivano dalle relazioni molti a molti.
 
 
 Le principali funzioni che possono essere svolte sono:
