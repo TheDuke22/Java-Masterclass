@@ -1,6 +1,6 @@
-package com.example.allyourevents.services;
+package com.example.isolaevent.services;
 
-import com.example.allyourevents.repositories.RepoCRUDPreferito;
+import com.example.isolaevent.repositories.RepoCRUDPreferito;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

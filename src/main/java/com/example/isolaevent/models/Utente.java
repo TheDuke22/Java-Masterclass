@@ -1,4 +1,4 @@
-package com.example.allyourevents.models;
+package com.example.isolaevent.models;
 
 import java.util.Date;
 import java.util.UUID;

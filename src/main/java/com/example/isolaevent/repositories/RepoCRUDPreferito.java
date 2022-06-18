@@ -1,4 +1,4 @@
-package com.example.allyourevents.repositories;
+package com.example.isolaevent.repositories;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

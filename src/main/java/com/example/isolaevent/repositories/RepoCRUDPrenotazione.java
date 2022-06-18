@@ -1,4 +1,4 @@
-package com.example.allyourevents.repositories;
+package com.example.isolaevent.repositories;
 /*
 Prenotazione o Crea prenotazione per un evento (passaggio di utente ed evento come parametri) oppure
 Ottenere tutte le prenotazioni passate dato un utente o Ottenere tutte le prenotazioni future dato un utente

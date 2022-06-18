@@ -1,7 +1,6 @@
-package com.example.allyourevents.services;
+package com.example.isolaevent.services;
 
-import com.example.allyourevents.repositories.RepoCRUDRecensione;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.isolaevent.repositories.RepoCRUDRecensione;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
