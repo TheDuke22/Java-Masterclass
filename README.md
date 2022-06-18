@@ -1,9 +1,9 @@
 # IsolaEvent 👨‍💻👩‍💻
 BREVE DESCRIZIONE DEL PROGETTO 
 
-L'applicazione e' un progetto spring realizzato durante il corso "JAVA Masterclass" di treedom.
-L'app simula un sistema di prenotazioni eventi nello specifico adattato per Isola Catania. 
-Il team si e' occupato dello sviluppo della parte backend dell'applicazione, progettando prima lo schema entita' - relazione, per poi sviluppare i metodi con annessi endpoint per l'inserimento dei dati all'interno del database.
+L'applicazione e' un progetto Spring realizzato durante il corso "Masterclass Code-To-Work Java" di Opinno Italy.
+L'app simula un sistema di prenotazioni eventi, nello specifico adattato per Isola Catania. 
+Il team si e' occupato dello sviluppo della parte backend dell'applicazione, progettando prima lo schema entita' - relazione, per poi sviluppare le funzionalità dell'applicazione, con annessi endpoint per l'inserimento dei dati all'interno del database.
 
 
 ![IsolaEvent](https://user-images.githubusercontent.com/83754920/173840589-796795c7-a4cf-48c7-943b-e19f4db8bdf7.jpg)
@@ -18,7 +18,7 @@ LE ENTITA': campi
 - Prenota: id_prenotazione, id_evento, id_Utente 
 - Preferito: id_preferito, id_evento, id_utente
 
-*Prenota e Preferito derivano dalle relazioni molti a molti.
+*Prenota e Preferito sono state convertite anch'esse in entità tramite la traduzione dello schema precedente (avendo cardinalità N a N).
 
 
 Le principali funzioni che possono essere svolte sono:
