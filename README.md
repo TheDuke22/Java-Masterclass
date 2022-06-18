@@ -39,7 +39,7 @@ Le principali funzioni che possono essere svolte sono:
 DETTAGLIO DELLE OPERAZIONI
 
 -	Utente
--	  Creazione
+  -	Creazione
   
   Update (set Utente e get Utente)
   Cancellazione
