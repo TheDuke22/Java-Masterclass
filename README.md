@@ -5,7 +5,7 @@ L'applicazione e' un progetto Spring realizzato durante il corso "Masterclass Co
 L'app simula un sistema di prenotazione eventi adattato, nello specifico, al luogo Isola Catania e destinato a ridurre i problemi logistici per la prenotazione di eventi. 
 Il team si e' occupato dello sviluppo della parte backend dell'applicazione, progettando prima lo schema entita' - relazione, per poi sviluppare le funzionalità dell'applicazione, con annessi endpoint per l'inserimento dei dati all'interno del database.
 
-La seguente immagine rappresenta lo schema Entità-Relazione che abbiamo ideato e su cui si basa la parte backend del progetto:
+La seguente immagine rappresenta lo schema Entità-Relazione su cui si basa la parte backend del progetto:
 
 ![IsolaEvent](https://user-images.githubusercontent.com/83754920/173840589-796795c7-a4cf-48c7-943b-e19f4db8bdf7.jpg)
 
