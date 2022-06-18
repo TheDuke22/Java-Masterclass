@@ -38,12 +38,11 @@ Le principali funzioni che possono essere svolte sono:
 
 DETTAGLIO DELLE OPERAZIONI
 
--	Utente
-  -  	Creazione
-  
-  Update (set Utente e get Utente)
-  Cancellazione
-  Ottenere tutti gli eventi creati da un utente
+1. Utente
+  - Creazione
+  - Update (set Utente e get Utente)
+  - Cancellazione
+  - Ottenere tutti gli eventi creati da un utente
   
 -	Evento
   Creazione
