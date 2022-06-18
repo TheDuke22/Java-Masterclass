@@ -2,7 +2,7 @@
 BREVE DESCRIZIONE DEL PROGETTO 
 
 L'applicazione e' un progetto Spring realizzato durante il corso "Masterclass Code-To-Work Java" di Opinno Italy.
-L'app simula un sistema di prenotazioni eventi, nello specifico adattato per Isola Catania. 
+L'app simula un sistema di prenotazione eventi adattato nello specifico al luogo Isola Catania e destinato a ridurre i problemi logistici per la prenotazione di eventi. 
 Il team si e' occupato dello sviluppo della parte backend dell'applicazione, progettando prima lo schema entita' - relazione, per poi sviluppare le funzionalità dell'applicazione, con annessi endpoint per l'inserimento dei dati all'interno del database.
 
 
