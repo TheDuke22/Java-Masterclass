@@ -1,5 +1,13 @@
 # IsolaEvent 👨‍💻👩‍💻
 
+L'applicazione e' un progetto spring realizzato durante il corso "JAVA Masterclass" di treedom.
+L'app simula un sistema di prenotazioni eventi nello specifico adattato per Isola Catania. 
+Il team si e' occupato dello sviluppo della parte backend dell'applicazione, progettando prima lo schema entita' - relazione, per poi sviluppare i metodi con annessi endpoint per l'inserimento dei dati all'interno del database.
+
+![IsolaEvent](https://user-images.githubusercontent.com/83754920/173840589-796795c7-a4cf-48c7-943b-e19f4db8bdf7.jpg)
+
+Le principali funzioni che possono essere svolte sono:
+
 -	Creare Utente
 -	Creare un Evento
 -	Creare una Stanza
@@ -43,6 +51,6 @@ OPERAZIONI
 -	Recensione
   o	Creazione di una recensione a partire da una prenotazione (controllare se l’evento sia già finito)
 
-![IsolaEvent](https://user-images.githubusercontent.com/83754920/173840589-796795c7-a4cf-48c7-943b-e19f4db8bdf7.jpg)
+
 
 
