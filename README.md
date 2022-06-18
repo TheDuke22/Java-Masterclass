@@ -11,12 +11,12 @@ Il team si e' occupato dello sviluppo della parte backend dell'applicazione, pro
 
 LE ENTITA': campi
 
-Utente: id, nome, cognome, e-mail, data di nascita, portafoglio(saldo)
-Evento: id, titolo, descrizione, data, orario, organizzatore, lista di partecipanti, prezzo, stanza
-Stanza: id, nome, capacità (posti disponibili)
-Recensione: id_recensione, titolo, descrizione, valutazione (intero da 1 a 5)
-Prenota: id_prenotazione, id_evento, id_Utente 
-Preferito: id_preferito, id_evento, id_utente
+- Utente: id, nome, cognome, e-mail, data di nascita, portafoglio(saldo)
+- Evento: id, titolo, descrizione, data, orario, organizzatore, lista di partecipanti, prezzo, stanza
+- Stanza: id, nome, capacità (posti disponibili)
+- Recensione: id_recensione, titolo, descrizione, valutazione (intero da 1 a 5)
+- Prenota: id_prenotazione, id_evento, id_Utente 
+- Preferito: id_preferito, id_evento, id_utente
 
 *Prenota e Preferito sono derivanti dalla relazione molti a molti.
 
