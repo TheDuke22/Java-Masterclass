@@ -14,7 +14,7 @@ LE ENTITA': campi
 Utente: id, nome, cognome, e-mail, data di nascita, portafoglio(saldo)
 Evento: id, titolo, descrizione, data, orario, organizzatore, lista di partecipanti, prezzo, stanza
 Stanza: id, nome, capacità (posti disponibili)
-Recensione: id_recensione, titolo, descrizione, intero da 1 a 5 (valutazione)
+Recensione: id_recensione, titolo, descrizione, valutazione (intero da 1 a 5)
 Prenota: id_prenotazione, id_evento, id_Utente 
 Preferito: id_preferito, id_evento, id_utente
 
@@ -44,26 +44,26 @@ DETTAGLIO DELLE OPERAZIONI
    - Cancellazione
    - Ottenere tutti gli eventi creati da un utente
   
--	Evento
-  Creazione
-  Ottenere un evento con un certo id
-  *	Ottenere tutti gli eventi disponibili
+2.	Evento
+   - Creazione
+   - Ottenere un evento con un certo id
+ 	- Ottenere tutti gli eventi disponibili
   
--	Prenotazione
-  *	Crea prenotazione per un evento (passaggio di utente ed evento come parametri)
-  *	Ottenere tutte le prenotazioni passate dato un utente
-  *	Ottenere tutte le prenotazioni future dato un utente
+3.	Prenotazione
+  	- Crea prenotazione per un evento (passaggio di utente ed evento come parametri)
+ 	- Ottenere tutte le prenotazioni passate dato un utente
+  	- Ottenere tutte le prenotazioni future dato un utente
 
--	Stanza
-  *	Creare una stanza
-  *	Update di una stanza (posti disponibili o nome)
-  *	Cancellare una stanza (se cancellata una stanza, gli eventi associati si cancellano allo stesso modo, cascade)
+4.	Stanza
+  	- Creare una stanza
+  	- Update di una stanza (posti disponibili o nome)
+  	- Cancellare una stanza (se cancellata una stanza, gli eventi associati si cancellano allo stesso modo, cascade)
 
--	Recensione
-  *	Creazione di una recensione a partire da una prenotazione (controllare se l’evento sia già finito)
+5.	Recensione
+  	- Creazione di una recensione a partire da una prenotazione (assicurandoci l’evento sia già finito)
   
   
-  Le seguenti operazioni sono state "testate" attraverso l'utilizzo di POSTMAN.
+Tutte le operazioni sono state "testate" attraverso l'utilizzo di POSTMAN.
 
 
 
