@@ -39,28 +39,28 @@ Le principali funzioni che possono essere svolte sono:
 DETTAGLIO DELLE OPERAZIONI
 
 -	Utente
-  -	Creazione
-  -	Update (set Utente e get Utente)
-  -	Cancellazione
-  -	Ottenere tutti gli eventi creati da un utente
+  *	Creazione
+  *	Update (set Utente e get Utente)
+  *	Cancellazione
+  *	Ottenere tutti gli eventi creati da un utente
   
 -	Evento
-  -	Creazione
-  -	Ottenere un evento con un certo id
-  -	Ottenere tutti gli eventi disponibili
+  *	Creazione
+  *	Ottenere un evento con un certo id
+  *	Ottenere tutti gli eventi disponibili
   
 -	Prenotazione
-  -	Crea prenotazione per un evento (passaggio di utente ed evento come parametri)
-  -	Ottenere tutte le prenotazioni passate dato un utente
-  -	Ottenere tutte le prenotazioni future dato un utente
+  *	Crea prenotazione per un evento (passaggio di utente ed evento come parametri)
+  *	Ottenere tutte le prenotazioni passate dato un utente
+  *	Ottenere tutte le prenotazioni future dato un utente
 
 -	Stanza
-  -	Creare una stanza
-  -	Update di una stanza (posti disponibili o nome)
-  -	Cancellare una stanza (se cancellata una stanza, gli eventi associati si cancellano allo stesso modo, cascade)
+  *	Creare una stanza
+  *	Update di una stanza (posti disponibili o nome)
+  *	Cancellare una stanza (se cancellata una stanza, gli eventi associati si cancellano allo stesso modo, cascade)
 
 -	Recensione
-  -	Creazione di una recensione a partire da una prenotazione (controllare se l’evento sia già finito)
+  *	Creazione di una recensione a partire da una prenotazione (controllare se l’evento sia già finito)
   
   
   Le seguenti operazioni sono state "testate" attraverso l'utilizzo di POSTMAN.
