@@ -1,7 +1,7 @@
 package com.example.isolaevent.services;
 
 import com.example.isolaevent.models.Evento;
-import com.example.isolaevent.repositories.EventsCrudRepo;
+import com.example.isolaevent.repositories.RepoCRUDEvento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +12,9 @@ import java.util.UUID;
 @Service
 public class ServiceForEvents {
     @Autowired
-    EventsCrudRepo repoForEvents;
+    RepoCRUDEvento repoForEvents;
 
-    public ServiceForEvents(EventsCrudRepo repoForEvents) {
+    public ServiceForEvents(RepoCRUDEvento repoForEvents) {
         this.repoForEvents = repoForEvents;
     }
 

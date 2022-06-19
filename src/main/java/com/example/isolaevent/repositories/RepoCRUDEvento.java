@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public class EventsCrudRepo {
+public class RepoCRUDEvento {
     @Autowired
     JdbcTemplate jdbcTemplate;
 

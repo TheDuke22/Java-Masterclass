@@ -1,6 +1,7 @@
 package com.example.isolaevent.controller;
 
 import com.example.isolaevent.models.Evento;
+import com.example.isolaevent.models.Stanza;
 import com.example.isolaevent.models.Utente;
 import com.example.isolaevent.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -150,5 +151,36 @@ public class IsolaController {
         List<UUID> preferiti = servicePreferiti.getPreferiti(idUtente);
         if(preferiti.isEmpty()) return ResponseEntity.badRequest().build();
         return ResponseEntity.ok().body(preferiti);
+    }
+
+    @PostMapping (value = "/createStanza")
+    public ResponseEntity <Void> createStanza(@RequestBody Stanza stanza){
+        boolean isCreated = serviceForStanza.createStanza(stanza);
+        if (isCreated) return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
+    }
+
+
+    @GetMapping (value = "/getStanza")
+    public ResponseEntity <Stanza> getStanza (@RequestParam (value = "id")UUID id ){
+        Stanza stanza = serviceForStanza.getStanza(id);
+        if (stanza!=null)return ResponseEntity.ok().body(stanza);
+        return ResponseEntity.badRequest().build();
+    }
+
+
+    @PutMapping (value = "/updateStanza")
+    public ResponseEntity <Void> updateStanza (@RequestBody Stanza stanza){
+        boolean isUpdated= serviceForStanza.updateStanza(stanza);
+        if(isUpdated) return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
+    }
+
+
+    @DeleteMapping (value = "/deleteStanza")
+    public  ResponseEntity <Void> deleteStanza(@RequestParam (value = "id")UUID id){
+        boolean deleted = serviceForStanza.deleteStanza(id);
+        if (deleted)return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
     }
 }
