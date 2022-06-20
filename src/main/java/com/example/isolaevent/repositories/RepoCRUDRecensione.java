@@ -25,7 +25,7 @@ public class RepoCRUDRecensione {
 
     private boolean isFinished(UUID idPren) {    //dall'idprenotazione, faccio la join con la tabella evento e vedo se è finito
         LocalDateTime time = LocalDateTime.now();
-        String sql = "select  from schema_isolaevent.prenota as p, schema_isolaevent.evento as e where e.id = p.idevento and p.idprenotazione = ? and e.data_ora_fine < ?";
+        String sql = "select p.idprenotazione from schema_isolaevent.prenota as p, schema_isolaevent.evento as e where e.id = p.idevento and p.idprenotazione = ? and e.data_ora_fine < ?";
         List<UUID> eventoNonfinito = jdbcTemplate.queryForList(sql, UUID.class, idPren, time);
         return !eventoNonfinito.isEmpty();
     }

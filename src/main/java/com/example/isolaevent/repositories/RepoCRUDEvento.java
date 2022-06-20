@@ -21,7 +21,8 @@ public class RepoCRUDEvento {
     public boolean createEvent(Evento evento){
 
         //controlla se ci sono collisioni di orari
-        String sql="select count(*) from schema_isolaevent.evento e where ((e.data_ora_inizio<=? and e.data_ora_fine>=?) or (e.data_ora_inizio<=?  and e.data_ora_fine>=?) or (e.data_ora_inizio>? and e.data_ora_fine<?)) and e.idstanza=?";
+        String sql="select count(*) from schema_isolaevent.evento e where ((e.data_ora_inizio<=? and e.data_ora_fine>=?) " +
+                "or (e.data_ora_inizio<=?  and e.data_ora_fine>=?) or (e.data_ora_inizio>? and e.data_ora_fine<?)) and e.idstanza=?";
 
         int collisioneEvento=jdbcTemplate.queryForObject(sql,Integer.class,evento.getDataOraInizio(),evento.getDataOraInizio(),evento.getDataOraFine(),evento.getDataOraFine(),evento.getDataOraInizio(),evento.getDataOraFine(),evento.getIdStanza());
 
